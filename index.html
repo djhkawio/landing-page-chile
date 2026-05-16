@@ -578,15 +578,20 @@
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      document.querySelectorAll('a[href="https://t.ly/JmDqh"]').forEach(function (link) {
-        link.addEventListener('click', function () {
-          if (typeof fbq === 'function') {
-            fbq('track', 'Lead');
-          }
-        });
-      });
-    });
+    document.addEventListener('click', function (event) {
+      var link = event.target.closest('a[href="https://t.ly/JmDqh"]');
+      if (!link) return;
+
+      event.preventDefault();
+
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead');
+      }
+
+      setTimeout(function () {
+        window.location.href = 'https://t.ly/JmDqh';
+      }, 350);
+    }, true);
   </script>
 </body>
 </html>
