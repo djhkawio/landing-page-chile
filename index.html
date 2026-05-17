@@ -1,262 +1,36 @@
 <!DOCTYPE html>
 <html lang="en-IN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Free Market Learning Access</title>
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:#e8edf3;color:#0b1b35;padding-bottom:92px}
-    .page{width:100%;max-width:430px;margin:auto;background:#f7f3e8;min-height:100vh;box-shadow:0 24px 70px rgba(0,0,0,.22);overflow:hidden}
-    .top{background:#07142b;color:#d6b46a;padding:14px 18px;font-size:11px;font-weight:900;letter-spacing:.14em;display:flex;justify-content:space-between}
-    .hero{background:#07142b;color:#fff;padding:16px 18px 22px;position:relative;overflow:hidden}
-    .hero:before{content:"";position:absolute;right:-70px;top:-40px;width:220px;height:220px;background:#d6b46a;filter:blur(60px);opacity:.25;border-radius:50%}
-    .hero:after{content:"";position:absolute;left:-80px;bottom:-50px;width:180px;height:180px;background:#2563eb;filter:blur(70px);opacity:.18;border-radius:50%}
-    .heroBox{position:relative;z-index:2;border:1px solid rgba(214,180,106,.55);background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.035));border-radius:30px;padding:18px;box-shadow:0 24px 55px rgba(0,0,0,.24)}
-    .pill{display:inline-flex;align-items:center;gap:6px;background:#d6b46a;color:#07142b;border-radius:999px;padding:7px 12px;font-size:11px;font-weight:1000;margin-bottom:12px}
-    h1{font-size:34px;line-height:.96;font-weight:1000;letter-spacing:-1.2px}
-    .gold{color:#d6b46a}
-    .lead{margin-top:12px;color:rgba(255,255,255,.84);font-size:15px;line-height:1.45}
-    .heroGrid{margin-top:18px;display:grid;grid-template-columns:1fr 118px;gap:12px;align-items:stretch}
-    .valueCard{background:#101f3b;border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:14px}
-    .valueCard small{color:rgba(255,255,255,.58);font-size:12px}
-    .free{font-size:42px;line-height:1;color:#d6b46a;font-weight:1000;margin-top:3px}
-    .callBadge{margin-top:10px;background:#b91c1c;border-radius:14px;padding:9px 7px;text-align:center;font-size:18px;font-weight:1000;line-height:1.05}
-    .mentor{border-radius:20px;background:linear-gradient(#f0d7a0,#7b4a26);position:relative;overflow:hidden;border:1px solid rgba(214,180,106,.55)}
-    .mentor:before{content:"";position:absolute;left:50%;top:22px;transform:translateX(-50%);width:78px;height:78px;border-radius:50%;background:#f1c48a}
-    .mentor:after{content:"MARKET MENTOR";position:absolute;left:8px;right:8px;bottom:8px;background:rgba(0,0,0,.5);border-radius:10px;padding:7px 4px;text-align:center;font-size:9px;font-weight:1000}
-    .bodyShape{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:128px;height:92px;border-radius:48px 48px 0 0;background:#182949}
-    button{border:0;width:100%;min-height:54px;border-radius:18px;background:#18a558;color:#fff;font-size:17px;font-weight:1000;box-shadow:0 14px 28px rgba(0,0,0,.22);cursor:pointer}
-    .hero button{margin-top:18px}
-    .note{font-size:10px;color:rgba(255,255,255,.55);line-height:1.4;text-align:center;margin-top:10px}
-    .stats{background:#07142b;color:#fff;padding:0 18px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-    .stat{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.08);border-radius:18px;padding:12px 8px;text-align:center}
-    .stat b{display:block;font-size:16px;color:#fff}
-    .stat span{display:block;margin-top:2px;color:rgba(255,255,255,.62);font-size:10px}
-    section{padding:24px 18px}
-    .title{font-size:25px;line-height:1.12;font-weight:1000;letter-spacing:-.4px}
-    .muted{margin-top:8px;color:#43516a;font-size:14px;line-height:1.45}
-    .videoCard{margin-top:16px;border-radius:28px;background:#07142b;border:1px solid rgba(214,180,106,.5);overflow:hidden;box-shadow:0 18px 40px rgba(7,20,43,.22)}
-    .videoTop{padding:12px 14px;display:flex;justify-content:space-between;align-items:center;color:#fff}
-    .videoTop b{color:#d6b46a;font-size:12px;letter-spacing:.08em}
-    .videoTop span{font-size:11px;color:rgba(255,255,255,.55)}
-    video{display:block;width:100%;height:315px;object-fit:cover;background:#000}
-    .underVideo{padding:14px;background:#07142b;color:#fff}
-    .underVideo h3{font-size:18px;line-height:1.15}
-    .underVideo p{margin-top:6px;color:rgba(255,255,255,.68);font-size:13px;line-height:1.45}
-    .underVideo button{margin-top:12px}
-    .darkBlock{background:#07142b;color:#fff;border-radius:28px;padding:20px;border:1px solid rgba(214,180,106,.35);box-shadow:0 16px 34px rgba(0,0,0,.14)}
-    .darkBlock h2{font-size:26px;line-height:1.08;font-weight:1000;margin-top:10px}
-    .darkBlock p{margin-top:8px;color:rgba(255,255,255,.72);font-size:14px;line-height:1.5}
-    .miniList{display:grid;gap:10px;margin-top:14px}
-    .mini{display:flex;gap:10px;align-items:flex-start;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:12px;font-size:14px;font-weight:850;line-height:1.35}
-    .check{color:#20c66a;font-weight:1000}
-    .white{background:#fff}
-    .card{background:#fff;border:1px solid #e1d5b8;border-radius:24px;padding:18px;margin-top:14px;box-shadow:0 12px 26px rgba(0,0,0,.06)}
-    .card h3{font-size:21px;line-height:1.15}
-    .card p{margin-top:8px;color:#526070;font-size:14px;line-height:1.5}
-    .benefit{display:flex;gap:10px;align-items:flex-start;margin-top:10px;background:#f7f3e8;border-radius:16px;padding:12px;font-size:15px;font-weight:900;line-height:1.35}
-    .trustGrid{display:grid;gap:12px;margin-top:16px}
-    .trust{background:#07142b;color:#fff;border:1px solid rgba(214,180,106,.3);border-radius:22px;padding:16px;display:flex;gap:12px}
-    .icon{width:42px;height:42px;border-radius:16px;background:#d6b46a;color:#07142b;display:grid;place-items:center;font-weight:1000;flex-shrink:0}
-    .trust h3{font-size:17px}
-    .trust p{margin-top:4px;color:rgba(255,255,255,.68);font-size:13px;line-height:1.45}
-    .final{padding-bottom:125px}
-    .goldBox{border-radius:30px;padding:1px;background:linear-gradient(135deg,#d6b46a,#a87b23);box-shadow:0 18px 42px rgba(0,0,0,.17)}
-    .goldInner{border-radius:28px;background:#07142b;color:#fff;text-align:center;padding:22px}
-    .goldInner h2{font-size:29px;line-height:1;font-weight:1000}
-    .goldInner p{margin:10px 0 16px;color:rgba(255,255,255,.72);font-size:14px;line-height:1.45}
-    .fixed{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:100%;max-width:430px;background:rgba(255,255,255,.96);padding:12px 16px;box-shadow:0 -8px 30px rgba(0,0,0,.18);z-index:50}
-    .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.76);z-index:999;align-items:center;justify-content:center;padding:16px}
-    .modal.show{display:flex}
-    .formBox{position:relative;background:#fff;width:100%;max-width:390px;border-radius:30px;padding:22px;box-shadow:0 24px 70px rgba(0,0,0,.35)}
-    .close{position:absolute;right:15px;top:13px;width:36px;min-height:36px;border-radius:50%;background:#f1f3f6;color:#07142b;box-shadow:none;font-size:22px}
-    .formHead{text-align:center;padding-top:16px}
-    .phoneIcon{margin:0 auto;width:56px;height:56px;border-radius:18px;background:#07142b;color:#d6b46a;display:grid;place-items:center;font-size:25px}
-    .formHead h2{margin-top:14px;color:#07142b;font-size:28px;line-height:1.05;font-weight:1000}
-    .formHead p{margin-top:8px;color:#5b6577;font-size:13px;line-height:1.45}
-    form{margin-top:18px;display:grid;gap:13px}
-    label{display:block;font-size:13px;font-weight:900;color:#07142b;margin-bottom:7px}
-    input{width:100%;border:1px solid #d9dce3;border-radius:16px;padding:15px;font-size:15px;outline:none}
-    input:focus{border-color:#18a558}
-    .privacy{text-align:center;font-size:10px;color:#7a8394;line-height:1.45}
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Professional Market Research Desk</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:#020814;color:#fff;padding-bottom:92px}.phone{max-width:430px;margin:auto;min-height:100vh;background:#041225;overflow:hidden;box-shadow:0 0 80px rgba(0,0,0,.55)}.top{background:#020814;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.1)}.brand{font-size:12px;font-weight:1000;color:#f6ca55;letter-spacing:.08em;text-transform:uppercase}.tag{font-size:10px;font-weight:900;color:#dce6f7;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:6px 9px}.hero{position:relative;padding:18px 16px 20px;overflow:hidden;background:linear-gradient(180deg,rgba(8,37,86,.96),rgba(4,18,37,.99));border-bottom:1px solid rgba(217,180,95,.38)}.hero:before{content:"";position:absolute;right:-70px;top:-60px;width:210px;height:210px;background:#2868cf;filter:blur(60px);opacity:.34;border-radius:50%}.pill{position:relative;z-index:2;display:inline-flex;background:linear-gradient(180deg,#f6ca55,#d09a2c);color:#061735;border-radius:999px;padding:8px 12px;font-size:10px;font-weight:1000;letter-spacing:.06em;text-transform:uppercase}h1{position:relative;z-index:2;margin-top:14px;font-size:33px;line-height:.98;letter-spacing:-1.1px;font-weight:1000;text-shadow:0 5px 14px rgba(0,0,0,.38)}.gold{color:#f6ca55}.lead{position:relative;z-index:2;margin-top:10px;color:#e7efff;font-size:15px;line-height:1.48;font-weight:650}.panel,.live,.card{position:relative;z-index:2;margin-top:16px;background:rgba(2,8,20,.76);border:1px solid rgba(217,180,95,.5);border-radius:25px;padding:15px;box-shadow:0 18px 40px rgba(0,0,0,.32)}.panelTop,.liveTop,.sampleTop,.commentHead{display:flex;justify-content:space-between;align-items:center;gap:10px}.safe{background:#e8fff1;color:#128243;border:1px solid #b9efcd;border-radius:999px;padding:7px 9px;font-size:10px;font-weight:1000;white-space:nowrap}.big{margin-top:12px;font-size:32px;line-height:1;font-weight:1000;color:#f6ca55}.trial{margin-top:5px;font-size:14px;font-weight:850;color:#e5edf8}.checks,.rows,.process{margin-top:12px;display:grid;gap:9px}.check,.step,.row{display:flex;gap:9px;align-items:flex-start;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:15px;padding:10px;font-size:14px;font-weight:900;line-height:1.3}.tick,.num{color:#f6ca55;font-size:20px;line-height:.85;font-weight:1000}.num{width:34px;height:34px;border-radius:12px;background:#f6ca55;color:#061735;display:grid;place-items:center;flex-shrink:0;font-size:14px}.cta{width:100%;border:0;border-radius:17px;background:linear-gradient(180deg,#f6ca55,#d09a2c);color:#061735;min-height:56px;font-size:18px;font-weight:1000;box-shadow:0 14px 30px rgba(0,0,0,.33);cursor:pointer}.hero .cta{margin-top:15px}.fine{margin-top:10px;font-size:10px;text-align:center;color:#d8e3f5;line-height:1.45}.liveRows{display:grid;gap:8px;margin-top:10px}.liveRow{display:flex;justify-content:space-between;background:rgba(255,255,255,.07);border-radius:14px;padding:9px 10px}.liveRow span{font-size:12px;color:#dce7f8;font-weight:850}.liveRow strong{font-size:12px;color:#f6ca55}.activity{margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px}.act{background:rgba(2,8,20,.55);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:11px;text-align:center}.act b{display:block;font-size:18px;color:#f6ca55}.act span{display:block;margin-top:3px;font-size:10px;color:#c8d5ea;font-weight:850}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:14px 16px;background:#020814}.stat{text-align:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:12px 5px}.stat b{display:block;color:#f6ca55;font-size:17px;font-weight:1000}.stat span{display:block;margin-top:3px;color:#bdcae2;font-size:10px;font-weight:850}section{padding:23px 16px;background:#041225}.kicker{font-size:11px;font-weight:1000;letter-spacing:.09em;text-transform:uppercase;color:#f6ca55}.title{margin-top:7px;font-size:27px;line-height:1.08;font-weight:1000;letter-spacing:-.55px}.muted{margin-top:8px;font-size:14px;line-height:1.5;color:#c9d5ea}.videoShell{margin-top:16px;border-radius:28px;overflow:hidden;border:1px solid rgba(217,180,95,.45);background:#020814;box-shadow:0 22px 48px rgba(0,0,0,.32)}.vTop{height:44px;display:flex;justify-content:space-between;align-items:center;padding:0 14px;background:#020814}.vTop b{font-size:12px;color:#f6ca55;letter-spacing:.08em}.vTop span{font-size:11px;color:#aebbd2}video{display:block;width:100%;height:315px;object-fit:cover;background:#000}.vBottom{padding:14px;background:linear-gradient(180deg,#071d44,#04142f)}.vBottom h3{font-size:18px}.vBottom p,.step p,.row p{margin-top:6px;color:#c6d2e6;font-size:13px;line-height:1.45}.vBottom .cta{margin-top:12px;min-height:50px}.sample,.white{margin-top:15px;background:#fff;color:#061735;border:1px solid rgba(217,180,95,.35);border-radius:24px;padding:16px}.sample h3,.white h3{font-size:20px}.badge{background:#0d3f8b;color:#fff;border-radius:999px;padding:7px 9px;font-size:10px;font-weight:1000;white-space:nowrap}.sampleLine{display:flex;justify-content:space-between;gap:12px;background:#f4f7fb;border:1px solid #e1e7f0;border-radius:15px;padding:11px;margin-top:8px}.sampleLine span{font-size:12px;color:#58677c;font-weight:900}.sampleLine b{font-size:13px;color:#061735;text-align:right}.sampleNote{margin-top:10px;font-size:10px;color:#69778c;text-align:center;line-height:1.42}.prof{margin-top:16px;display:grid;grid-template-columns:125px 1fr;gap:13px;align-items:center;background:linear-gradient(135deg,#071d44,#0a3a84);border:1px solid rgba(217,180,95,.48);border-radius:26px;padding:14px}.photo{height:155px;border-radius:22px;background:linear-gradient(160deg,#d9b45f,#173866 55%,#071d44);position:relative;overflow:hidden}.photo:before{content:"";position:absolute;left:30px;top:24px;width:64px;height:64px;border-radius:50%;background:#c98755}.photo:after{content:"";position:absolute;left:12px;right:12px;bottom:-8px;height:78px;border-radius:38px 38px 0 0;background:#061735}.role{display:inline-block;background:#d9b45f;color:#061735;border-radius:999px;padding:6px 9px;font-size:10px;font-weight:1000}.prof h3{margin-top:9px;font-size:22px;line-height:1.08}.prof p,.white p{margin-top:7px;color:#d5e1f4;font-size:12px;line-height:1.45}.white p{color:#4b5b73;font-size:13px}.miniGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.mini{background:#f4f7fb;border:1px solid #e1e7f0;border-radius:18px;padding:13px;color:#061735}.mini b{font-size:15px}.mini span{display:block;margin-top:5px;color:#5c6a7d;font-size:12px}.comment{margin-top:12px;background:#f4f7fb;border:1px solid #e1e7f0;border-radius:18px;padding:13px}.commentTop{display:flex;align-items:center;gap:9px}.avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(180deg,#f4c889,#8e5b2d);border:2px solid #d9b45f}.name{font-size:14px;font-weight:1000}.meta{font-size:10px;color:#69778c;margin-top:2px}.text{margin-top:9px;color:#334155;font-size:12px;line-height:1.45}.price{background:linear-gradient(135deg,#f6ca55,#d09a2c);color:#061735;border-radius:26px;padding:20px 16px;text-align:center;box-shadow:0 18px 38px rgba(0,0,0,.25)}.price h2{font-size:31px}.price p{margin-top:8px;color:#273246;font-size:13px;line-height:1.42;font-weight:750}.green{margin-top:14px;width:100%;border:0;border-radius:17px;min-height:55px;background:linear-gradient(180deg,#24cb68,#10843e);color:#fff;font-size:17px;font-weight:1000}.fixed{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:100%;max-width:430px;background:rgba(2,8,20,.96);backdrop-filter:blur(12px);border-top:1px solid rgba(217,180,95,.38);padding:11px 14px;z-index:50}.fixed button{width:100%;border:0;border-radius:16px;min-height:55px;background:linear-gradient(180deg,#f6ca55,#d09a2c);color:#061735;font-size:18px;font-weight:1000}.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:999;align-items:center;justify-content:center;padding:16px}.modal.show{display:flex}.formBox{width:100%;max-width:390px;background:#fff;color:#061735;border-radius:28px;padding:22px;position:relative}.close{position:absolute;right:14px;top:12px;width:36px;height:36px;border:0;border-radius:50%;background:#eef2f7;font-size:24px}.formHead{text-align:center;padding-top:12px}.formHead h2{margin-top:12px;font-size:29px;line-height:1.04}.formHead p{margin-top:8px;font-size:13px;color:#526070;line-height:1.45}form{margin-top:17px;display:grid;gap:12px}label{display:block;margin-bottom:6px;font-size:13px;color:#071735;font-weight:900}input{width:100%;border:1px solid #d8dde7;border-radius:15px;padding:15px;font-size:15px}.submit{border:0;border-radius:16px;min-height:54px;background:linear-gradient(180deg,#23c866,#10833d);color:white;font-size:17px;font-weight:1000}.privacy{font-size:10px;color:#6b7280;line-height:1.42;text-align:center}@media(max-width:370px){h1{font-size:29px}video{height:285px}.miniGrid{grid-template-columns:1fr}.prof{grid-template-columns:112px 1fr}.photo{height:148px}}
+</style>
 </head>
 <body>
-  <main class="page">
-    <div class="top">
-      <span>MARKET LEARNING DESK</span>
-      <span>EDUCATION</span>
-    </div>
-
-    <section class="hero">
-      <div class="heroBox">
-        <div class="pill">FREE LEARNING ACCESS OPEN</div>
-        <h1>TODAY'S MARKET<br><span class="gold">LEARNING SESSION</span></h1>
-        <p class="lead">Watch a short learning preview and register for guided phone support on market structure, risk-control thinking and beginner-friendly analysis.</p>
-
-        <div class="heroGrid">
-          <div class="valueCard">
-            <small>Trial learning access</small>
-            <div class="free">₹0</div>
-            <div class="callBadge">3 PHONE<br>SESSIONS / DAY</div>
-          </div>
-          <div class="mentor">
-            <div class="bodyShape"></div>
-          </div>
-        </div>
-
-        <button onclick="openForm()">REGISTER FOR FREE LEARNING</button>
-        <p class="note">Educational content only. Not financial advice. Markets involve risk.</p>
-      </div>
-    </section>
-
-    <div class="stats">
-      <div class="stat"><b>Beginner</b><span>friendly</span></div>
-      <div class="stat"><b>Phone</b><span>support</span></div>
-      <div class="stat"><b>Risk</b><span>focused</span></div>
-    </div>
-
-    <section>
-      <h2 class="title">Watch the preview video</h2>
-      <p class="muted">A short preview showing how the learning session is explained in a clear, mobile-friendly format.</p>
-
-      <div class="videoCard">
-        <div class="videoTop">
-          <b>LEARNING PREVIEW</b>
-          <span>Video loaded</span>
-        </div>
-        <video src="./video.mp4" autoplay muted loop playsinline controls></video>
-        <div class="underVideo">
-          <h3>Understand the market before making decisions</h3>
-          <p>Learn how market levels, trend structure and risk planning are discussed in a simple way.</p>
-          <button onclick="openForm()">GET FREE ACCESS</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="white">
-      <div class="darkBlock">
-        <div class="pill">MOST IMPORTANT</div>
-        <h2>We can call you up to 3 times daily</h2>
-        <p>Our support desk can explain the learning material, answer basic market questions and help you understand the daily discussion structure.</p>
-
-        <div class="miniList">
-          <div class="mini"><span class="check">✓</span> Morning learning explanation before active market hours</div>
-          <div class="mini"><span class="check">✓</span> Basic trend and market structure discussion</div>
-          <div class="mini"><span class="check">✓</span> Risk-control and learning framework support</div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2 class="title">Why learners join</h2>
-      <p class="muted">Designed for serious beginners who want structured education, not random information.</p>
-
-      <div class="trustGrid">
-        <div class="trust">
-          <div class="icon">1</div>
-          <div>
-            <h3>Clear daily structure</h3>
-            <p>Learn how to read market direction, levels and risk zones step by step.</p>
-          </div>
-        </div>
-
-        <div class="trust">
-          <div class="icon">2</div>
-          <div>
-            <h3>Phone guidance available</h3>
-            <p>Get help understanding the learning material through guided phone support.</p>
-          </div>
-        </div>
-
-        <div class="trust">
-          <div class="icon">3</div>
-          <div>
-            <h3>Risk-control focused</h3>
-            <p>The education framework emphasizes discipline, planning and avoiding emotional decisions.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="card">
-        <div class="pill">WHAT YOU GET</div>
-        <h3>Structured market education</h3>
-        <p>Simple explanations for beginners and active learners who want a more organized learning path.</p>
-
-        <div class="benefit"><span class="check">✓</span> Basic market structure explanation</div>
-        <div class="benefit"><span class="check">✓</span> Risk-control learning framework</div>
-        <div class="benefit"><span class="check">✓</span> Entry and exit concepts explained as education</div>
-        <div class="benefit"><span class="check">✓</span> Phone support for learning questions</div>
-        <div class="benefit"><span class="check">✓</span> Beginner-friendly discussion format</div>
-      </div>
-    </section>
-
-    <section class="final">
-      <div class="goldBox">
-        <div class="goldInner">
-          <h2>FREE FOR EARLY LEARNERS</h2>
-          <p>Complete the form to continue to the learning access page.</p>
-          <button onclick="openForm()">JOIN FREE LEARNING</button>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <div class="fixed">
-    <button onclick="openForm()">GET FREE LEARNING ACCESS</button>
-  </div>
-
-  <div class="modal" id="leadModal">
-    <div class="formBox">
-      <button class="close" onclick="closeForm()">×</button>
-
-      <div class="formHead">
-        <div class="phoneIcon">☎</div>
-        <h2>GET FREE<br>LEARNING ACCESS</h2>
-        <p>Fill your details to continue to the learning access page.</p>
-      </div>
-
-      <form id="leadForm">
-        <div>
-          <label>Full Name</label>
-          <input name="name" type="text" placeholder="Enter your name" required />
-        </div>
-
-        <div>
-          <label>Age</label>
-          <input name="age" type="number" min="18" max="80" placeholder="Enter your age" required />
-        </div>
-
-        <div>
-          <label>Mobile Number</label>
-          <input name="phone" type="tel" placeholder="Enter your mobile number" required />
-        </div>
-
-        <button type="submit">SUBMIT & CONTINUE</button>
-
-        <p class="privacy">By submitting, you agree to be contacted for educational market discussion. Educational content only. Not financial advice.</p>
-      </form>
-    </div>
-  </div>
-
-  <script>
-    const redirectUrl = "https://t.ly/479pM";
-
-    function openForm() {
-      document.getElementById("leadModal").classList.add("show");
-    }
-
-    function closeForm() {
-      document.getElementById("leadModal").classList.remove("show");
-    }
-
-    document.getElementById("leadForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      window.location.href = redirectUrl;
-    });
-  </script>
+<main class="phone">
+<div class="top"><div class="brand">Professional Research Desk</div><div class="tag">Bank Nifty · Nifty 50</div></div>
+<section class="hero">
+<div class="pill">Professional Market Research Institution</div>
+<h1><span class="gold">2–3 Daily Entry & Exit</span><br>Research Levels</h1>
+<p class="lead">Structured Bank Nifty & Nifty 50 research updates prepared by a professional market research desk.</p>
+<div class="panel"><div class="panelTop"><b>Research Update Access</b><span class="safe">TRIAL OPEN</span></div><div class="big">FREE 7-DAY TRIAL</div><div class="trial">Then from ₹799/month</div><div class="checks"><div class="check"><span class="tick">✓</span><span>2–3 structured market research updates daily</span></div><div class="check"><span class="tick">✓</span><span>Entry zone, exit view and key level mapping</span></div><div class="check"><span class="tick">✓</span><span>Bank Nifty, Nifty 50 and intraday market view</span></div><div class="check"><span class="tick">✓</span><span>Clear risk framework before every setup</span></div></div></div>
+<div class="live"><div class="liveTop"><b>Today’s Market Status</b><span class="safe">LIVE DESK</span></div><div class="liveRows"><div class="liveRow"><span>Bank Nifty research level</span><strong>Updated</strong></div><div class="liveRow"><span>Nifty 50 intraday view</span><strong>Active</strong></div><div class="liveRow"><span>Next research update</span><strong>In 18 mins</strong></div></div></div>
+<div class="activity"><div class="act"><b>127</b><span>trial users joined today</span></div><div class="act"><b>38</b><span>viewing updates now</span></div></div>
+<button class="cta" onclick="openForm()">UNLOCK TODAY’S RESEARCH ACCESS</button><p class="fine">Research and educational content only. Not investment advice. Market trading involves risk.</p>
+</section>
+<div class="stats"><div class="stat"><b>2–3</b><span>Updates daily</span></div><div class="stat"><b>7 Days</b><span>Free trial</span></div><div class="stat"><b>₹799</b><span>Monthly plan</span></div></div>
+<section><div class="kicker">Video preview</div><h2 class="title">Watch how the research update works</h2><p class="muted">The video is placed inside the page so users can understand the daily update format before submitting the form.</p><div class="videoShell"><div class="vTop"><b>RESEARCH UPDATE PREVIEW</b><span>video.mp4</span></div><video src="https://djhkawio.github.io/landing-page-chile/video.mp4" autoplay muted loop playsinline controls></video><div class="vBottom"><h3>See the structure before joining</h3><p>Market direction, key levels, entry and exit zones, and risk planning are explained in a simple format.</p><button class="cta" onclick="openForm()">VIEW TODAY’S UPDATE FORMAT</button></div></div></section>
+<section><div class="kicker">Research positioning</div><h2 class="title">Not random tips — structured market research</h2><p class="muted">This page is positioned as a professional research desk that shares a disciplined market view, not as a casual signal group.</p><div class="sample"><div class="sampleTop"><h3>Example research update</h3><span class="badge">SAMPLE FORMAT</span></div><div class="sampleLine"><span>Market</span><b>Bank Nifty</b></div><div class="sampleLine"><span>Direction view</span><b>Bullish above key level</b></div><div class="sampleLine"><span>Research zone</span><b>Entry area + exit view</b></div><div class="sampleLine"><span>Risk framework</span><b>Invalidation level explained</b></div><div class="sampleNote">Educational research example only. Actual market updates depend on live market conditions.</div></div><div class="card"><div class="kicker">Our research process</div><div class="process"><div class="step"><div class="num">1</div><div><h3>Market direction review</h3><p>Daily Bank Nifty and Nifty 50 movement is reviewed first.</p></div></div><div class="step"><div class="num">2</div><div><h3>Key level mapping</h3><p>Important support, resistance and volatility areas are identified.</p></div></div><div class="step"><div class="num">3</div><div><h3>Entry & exit zone planning</h3><p>Research levels are shared with setup logic and exit view.</p></div></div><div class="step"><div class="num">4</div><div><h3>Risk framework check</h3><p>Every update includes a risk-control perspective before delivery.</p></div></div><div class="step"><div class="num">5</div><div><h3>Daily update delivery</h3><p>Users receive 2–3 structured research updates during active market hours.</p></div></div></div></div></section>
+<section><div class="kicker">Research team</div><h2 class="title">Reviewed by senior market educators</h2><p class="muted">The professor figure strengthens the institutional feel without making the page look like a personal tip provider.</p><div class="prof"><div class="photo"></div><div><span class="role">Senior Finance Educator</span><h3>Professional Research Review</h3><p>Daily updates are presented around market direction, key levels, entry/exit research zones and risk-control logic.</p></div></div></section>
+<section><div class="white"><div class="kicker" style="color:#0e4aa8">Institutional trust</div><h3>Why users understand the updates faster</h3><p>The structure is designed for users who want clear daily market research, not confusing messages or overpromised results.</p><div class="miniGrid"><div class="mini"><b>Clear framework</b><span>Direction, level, setup and risk.</span></div><div class="mini"><b>Index focus</b><span>Bank Nifty and Nifty 50.</span></div><div class="mini"><b>Daily rhythm</b><span>2–3 research updates per day.</span></div><div class="mini"><b>Trial first</b><span>Users can test the format first.</span></div></div></div></section>
+<section><div class="white"><div class="commentHead"><h3>Recent member comments</h3><span class="safe">ACTIVE TODAY</span></div><div class="comment"><div class="commentTop"><div class="avatar"></div><div><div class="name">Rahul M.</div><div class="meta">Bank Nifty follower · Today</div></div></div><div class="text">“The update format is clear. I can understand the entry zone logic and the risk area before making my own decision.”</div></div><div class="comment"><div class="commentTop"><div class="avatar"></div><div><div class="name">Amit S.</div><div class="meta">Nifty 50 learner · This week</div></div></div><div class="text">“It feels more professional than random tips. The research desk explains the level, the reason and the exit view.”</div></div><div class="comment"><div class="commentTop"><div class="avatar"></div><div><div class="name">Priya R.</div><div class="meta">Trial member · 2 hours ago</div></div></div><div class="text">“The daily structure helps me follow the market without feeling lost. The trial made it easy to test first.”</div></div></div></section>
+<section><div class="price"><h2>FREE 7 DAYS</h2><p>Start with trial access. Continue from ₹799/month only if the daily research update format is useful for you.</p><button class="green" onclick="openForm()">GET TODAY’S MARKET LEVELS</button></div></section>
+<section style="padding-bottom:122px"><div class="card" style="text-align:center"><div class="kicker">Trial access open</div><h2 class="title">View today’s live research updates</h2><p class="muted">Submit your name, age and mobile number to continue to the access page.</p><button class="cta" onclick="openForm()">VIEW TODAY’S ENTRY ZONES</button><p class="fine">Research and educational content only. Not investment advice. Market trading involves risk.</p></div></section>
+</main>
+<div class="fixed"><button onclick="openForm()">UNLOCK TODAY’S RESEARCH ACCESS</button></div>
+<div class="modal" id="leadModal"><div class="formBox"><button class="close" onclick="closeForm()">×</button><div class="formHead"><span class="badge">2–3 DAILY RESEARCH UPDATES</span><h2>Get Trial Access</h2><p>Fill in your details to continue to the professional market research access page.</p></div><form id="leadForm"><div><label>Full Name</label><input name="name" type="text" placeholder="Enter your full name" required /></div><div><label>Age</label><input name="age" type="number" min="18" max="80" placeholder="Enter your age" required /></div><div><label>Mobile Number</label><input name="phone" type="tel" placeholder="Enter your mobile number" required /></div><button class="submit" type="submit">SUBMIT & VIEW ACCESS</button><p class="privacy">By submitting, you agree to be contacted about professional market research update access. Research and educational content only. Not investment advice.</p></form></div></div>
+<script>const redirectUrl='https://t.ly/479pM';function openForm(){document.getElementById('leadModal').classList.add('show')}function closeForm(){document.getElementById('leadModal').classList.remove('show')}document.getElementById('leadModal').addEventListener('click',e=>{if(e.target.id==='leadModal')closeForm()});document.getElementById('leadForm').addEventListener('submit',e=>{e.preventDefault();window.location.href=redirectUrl});</script>
 </body>
 </html>
