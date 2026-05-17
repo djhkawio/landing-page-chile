@@ -1,48 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-IN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Free Market Learning Access</title>
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:Arial,sans-serif;background:#f4f1e8;color:#0b1b35;padding-bottom:90px}
-    .page{max-width:430px;margin:auto;background:#f7f3e8;min-height:100vh}
-    .top,.hero{background:#07142b;color:white}
-    .top{padding:14px 20px;color:#d6b46a;font-size:12px;font-weight:800;display:flex;justify-content:space-between}
-    .hero{padding:18px 20px 26px}
-    .box{border:1px solid #d6b46a88;border-radius:28px;padding:18px;background:#ffffff10}
-    .pill{display:inline-block;background:#d6b46a;color:#07142b;border-radius:999px;padding:7px 12px;font-size:11px;font-weight:900;margin-bottom:12px}
-    h1{font-size:34px;line-height:.98;font-weight:1000}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:#e8edf3;color:#0b1b35;padding-bottom:92px}
+    .page{width:100%;max-width:430px;margin:auto;background:#f7f3e8;min-height:100vh;box-shadow:0 24px 70px rgba(0,0,0,.22);overflow:hidden}
+    .top{background:#07142b;color:#d6b46a;padding:14px 18px;font-size:11px;font-weight:900;letter-spacing:.14em;display:flex;justify-content:space-between}
+    .hero{background:#07142b;color:#fff;padding:16px 18px 22px;position:relative;overflow:hidden}
+    .hero:before{content:"";position:absolute;right:-70px;top:-40px;width:220px;height:220px;background:#d6b46a;filter:blur(60px);opacity:.25;border-radius:50%}
+    .hero:after{content:"";position:absolute;left:-80px;bottom:-50px;width:180px;height:180px;background:#2563eb;filter:blur(70px);opacity:.18;border-radius:50%}
+    .heroBox{position:relative;z-index:2;border:1px solid rgba(214,180,106,.55);background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.035));border-radius:30px;padding:18px;box-shadow:0 24px 55px rgba(0,0,0,.24)}
+    .pill{display:inline-flex;align-items:center;gap:6px;background:#d6b46a;color:#07142b;border-radius:999px;padding:7px 12px;font-size:11px;font-weight:1000;margin-bottom:12px}
+    h1{font-size:34px;line-height:.96;font-weight:1000;letter-spacing:-1.2px}
     .gold{color:#d6b46a}
-    .lead{margin-top:12px;font-size:15px;line-height:1.45;color:#ffffffe0}
-    .price{margin-top:18px;background:#101f3b;border-radius:18px;padding:14px}
-    .big{font-size:32px;color:#d6b46a;font-weight:1000}
-    .red{margin-top:8px;background:#b91c1c;border-radius:13px;padding:9px;text-align:center;font-size:19px;font-weight:1000}
-    button{width:100%;border:0;border-radius:18px;background:#18a558;color:white;font-size:17px;font-weight:1000;min-height:54px;margin-top:16px}
-    .note{font-size:10px;color:#ffffff90;text-align:center;margin-top:10px;line-height:1.4}
-    section{padding:24px 20px}
-    .title{font-size:25px;line-height:1.1;font-weight:1000}
+    .lead{margin-top:12px;color:rgba(255,255,255,.84);font-size:15px;line-height:1.45}
+    .heroGrid{margin-top:18px;display:grid;grid-template-columns:1fr 118px;gap:12px;align-items:stretch}
+    .valueCard{background:#101f3b;border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:14px}
+    .valueCard small{color:rgba(255,255,255,.58);font-size:12px}
+    .free{font-size:42px;line-height:1;color:#d6b46a;font-weight:1000;margin-top:3px}
+    .callBadge{margin-top:10px;background:#b91c1c;border-radius:14px;padding:9px 7px;text-align:center;font-size:18px;font-weight:1000;line-height:1.05}
+    .mentor{border-radius:20px;background:linear-gradient(#f0d7a0,#7b4a26);position:relative;overflow:hidden;border:1px solid rgba(214,180,106,.55)}
+    .mentor:before{content:"";position:absolute;left:50%;top:22px;transform:translateX(-50%);width:78px;height:78px;border-radius:50%;background:#f1c48a}
+    .mentor:after{content:"MARKET MENTOR";position:absolute;left:8px;right:8px;bottom:8px;background:rgba(0,0,0,.5);border-radius:10px;padding:7px 4px;text-align:center;font-size:9px;font-weight:1000}
+    .bodyShape{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:128px;height:92px;border-radius:48px 48px 0 0;background:#182949}
+    button{border:0;width:100%;min-height:54px;border-radius:18px;background:#18a558;color:#fff;font-size:17px;font-weight:1000;box-shadow:0 14px 28px rgba(0,0,0,.22);cursor:pointer}
+    .hero button{margin-top:18px}
+    .note{font-size:10px;color:rgba(255,255,255,.55);line-height:1.4;text-align:center;margin-top:10px}
+    .stats{background:#07142b;color:#fff;padding:0 18px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .stat{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.08);border-radius:18px;padding:12px 8px;text-align:center}
+    .stat b{display:block;font-size:16px;color:#fff}
+    .stat span{display:block;margin-top:2px;color:rgba(255,255,255,.62);font-size:10px}
+    section{padding:24px 18px}
+    .title{font-size:25px;line-height:1.12;font-weight:1000;letter-spacing:-.4px}
     .muted{margin-top:8px;color:#43516a;font-size:14px;line-height:1.45}
-    .videoWrap{margin-top:16px;border-radius:26px;background:#000;overflow:hidden;border:1px solid #d6b46a88}
+    .videoCard{margin-top:16px;border-radius:28px;background:#07142b;border:1px solid rgba(214,180,106,.5);overflow:hidden;box-shadow:0 18px 40px rgba(7,20,43,.22)}
+    .videoTop{padding:12px 14px;display:flex;justify-content:space-between;align-items:center;color:#fff}
+    .videoTop b{color:#d6b46a;font-size:12px;letter-spacing:.08em}
+    .videoTop span{font-size:11px;color:rgba(255,255,255,.55)}
     video{display:block;width:100%;height:315px;object-fit:cover;background:#000}
-    .card{margin-top:16px;background:white;border-radius:24px;padding:18px;border:1px solid #e1d5b8}
-    .darkcard{background:#07142b;color:white}
-    .darkcard p{color:#ffffffbf}
-    .benefit{margin-top:10px;background:#f7f3e8;border-radius:16px;padding:12px;font-weight:900;font-size:15px}
-    .fixed{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:100%;max-width:430px;background:#fffffff5;padding:12px 16px;box-shadow:0 -8px 30px #0003}
-    .fixed button{margin-top:0}
-    .modal{display:none;position:fixed;inset:0;background:#000c;z-index:99;align-items:center;justify-content:center;padding:16px}
+    .underVideo{padding:14px;background:#07142b;color:#fff}
+    .underVideo h3{font-size:18px;line-height:1.15}
+    .underVideo p{margin-top:6px;color:rgba(255,255,255,.68);font-size:13px;line-height:1.45}
+    .underVideo button{margin-top:12px}
+    .darkBlock{background:#07142b;color:#fff;border-radius:28px;padding:20px;border:1px solid rgba(214,180,106,.35);box-shadow:0 16px 34px rgba(0,0,0,.14)}
+    .darkBlock h2{font-size:26px;line-height:1.08;font-weight:1000;margin-top:10px}
+    .darkBlock p{margin-top:8px;color:rgba(255,255,255,.72);font-size:14px;line-height:1.5}
+    .miniList{display:grid;gap:10px;margin-top:14px}
+    .mini{display:flex;gap:10px;align-items:flex-start;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:12px;font-size:14px;font-weight:850;line-height:1.35}
+    .check{color:#20c66a;font-weight:1000}
+    .white{background:#fff}
+    .card{background:#fff;border:1px solid #e1d5b8;border-radius:24px;padding:18px;margin-top:14px;box-shadow:0 12px 26px rgba(0,0,0,.06)}
+    .card h3{font-size:21px;line-height:1.15}
+    .card p{margin-top:8px;color:#526070;font-size:14px;line-height:1.5}
+    .benefit{display:flex;gap:10px;align-items:flex-start;margin-top:10px;background:#f7f3e8;border-radius:16px;padding:12px;font-size:15px;font-weight:900;line-height:1.35}
+    .trustGrid{display:grid;gap:12px;margin-top:16px}
+    .trust{background:#07142b;color:#fff;border:1px solid rgba(214,180,106,.3);border-radius:22px;padding:16px;display:flex;gap:12px}
+    .icon{width:42px;height:42px;border-radius:16px;background:#d6b46a;color:#07142b;display:grid;place-items:center;font-weight:1000;flex-shrink:0}
+    .trust h3{font-size:17px}
+    .trust p{margin-top:4px;color:rgba(255,255,255,.68);font-size:13px;line-height:1.45}
+    .final{padding-bottom:125px}
+    .goldBox{border-radius:30px;padding:1px;background:linear-gradient(135deg,#d6b46a,#a87b23);box-shadow:0 18px 42px rgba(0,0,0,.17)}
+    .goldInner{border-radius:28px;background:#07142b;color:#fff;text-align:center;padding:22px}
+    .goldInner h2{font-size:29px;line-height:1;font-weight:1000}
+    .goldInner p{margin:10px 0 16px;color:rgba(255,255,255,.72);font-size:14px;line-height:1.45}
+    .fixed{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:100%;max-width:430px;background:rgba(255,255,255,.96);padding:12px 16px;box-shadow:0 -8px 30px rgba(0,0,0,.18);z-index:50}
+    .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.76);z-index:999;align-items:center;justify-content:center;padding:16px}
     .modal.show{display:flex}
-    .formbox{background:white;border-radius:28px;padding:22px;width:100%;max-width:390px;position:relative}
-    .close{position:absolute;right:14px;top:12px;width:36px;min-height:36px;border-radius:50%;background:#f1f3f6;color:#07142b;margin:0;font-size:22px}
-    .formhead{text-align:center;padding-top:20px}
-    .formhead h2{font-size:28px;line-height:1.05}
-    .formhead p{margin-top:8px;color:#5b6577;font-size:13px;line-height:1.45}
+    .formBox{position:relative;background:#fff;width:100%;max-width:390px;border-radius:30px;padding:22px;box-shadow:0 24px 70px rgba(0,0,0,.35)}
+    .close{position:absolute;right:15px;top:13px;width:36px;min-height:36px;border-radius:50%;background:#f1f3f6;color:#07142b;box-shadow:none;font-size:22px}
+    .formHead{text-align:center;padding-top:16px}
+    .phoneIcon{margin:0 auto;width:56px;height:56px;border-radius:18px;background:#07142b;color:#d6b46a;display:grid;place-items:center;font-size:25px}
+    .formHead h2{margin-top:14px;color:#07142b;font-size:28px;line-height:1.05;font-weight:1000}
+    .formHead p{margin-top:8px;color:#5b6577;font-size:13px;line-height:1.45}
     form{margin-top:18px;display:grid;gap:13px}
-    label{font-size:13px;font-weight:900}
-    input{width:100%;border:1px solid #d9dce3;border-radius:16px;padding:15px;font-size:15px}
-    .privacy{text-align:center;font-size:10px;color:#7a8394;line-height:1.4}
+    label{display:block;font-size:13px;font-weight:900;color:#07142b;margin-bottom:7px}
+    input{width:100%;border:1px solid #d9dce3;border-radius:16px;padding:15px;font-size:15px;outline:none}
+    input:focus{border-color:#18a558}
+    .privacy{text-align:center;font-size:10px;color:#7a8394;line-height:1.45}
   </style>
 </head>
 <body>
@@ -53,51 +90,117 @@
     </div>
 
     <section class="hero">
-      <div class="box">
-        <div class="pill">FREE ACCESS OPEN</div>
+      <div class="heroBox">
+        <div class="pill">FREE LEARNING ACCESS OPEN</div>
         <h1>TODAY'S MARKET<br><span class="gold">LEARNING SESSION</span></h1>
-        <p class="lead">Watch a short learning preview and register for free phone guidance about market structure, risk control and basic analysis.</p>
-        <div class="price">
-          <div>Trial access</div>
-          <div class="big">₹0</div>
-          <div class="red">3 PHONE SESSIONS / DAY</div>
+        <p class="lead">Watch a short learning preview and register for guided phone support on market structure, risk-control thinking and beginner-friendly analysis.</p>
+
+        <div class="heroGrid">
+          <div class="valueCard">
+            <small>Trial learning access</small>
+            <div class="free">₹0</div>
+            <div class="callBadge">3 PHONE<br>SESSIONS / DAY</div>
+          </div>
+          <div class="mentor">
+            <div class="bodyShape"></div>
+          </div>
         </div>
+
         <button onclick="openForm()">REGISTER FOR FREE LEARNING</button>
         <p class="note">Educational content only. Not financial advice. Markets involve risk.</p>
       </div>
     </section>
 
+    <div class="stats">
+      <div class="stat"><b>Beginner</b><span>friendly</span></div>
+      <div class="stat"><b>Phone</b><span>support</span></div>
+      <div class="stat"><b>Risk</b><span>focused</span></div>
+    </div>
+
     <section>
       <h2 class="title">Watch the preview video</h2>
-      <p class="muted">This video has been uploaded to your GitHub repository.</p>
-      <div class="videoWrap">
-        <video src="./video.mp4" autoplay muted loop playsinline controls></video>
-      </div>
+      <p class="muted">A short preview showing how the learning session is explained in a clear, mobile-friendly format.</p>
 
-      <div class="card darkcard">
-        <h2>Free learning access</h2>
-        <p>Register to receive educational phone guidance and market-learning explanations.</p>
-        <button onclick="openForm()">GET FREE ACCESS</button>
+      <div class="videoCard">
+        <div class="videoTop">
+          <b>LEARNING PREVIEW</b>
+          <span>Video loaded</span>
+        </div>
+        <video src="./video.mp4" autoplay muted loop playsinline controls></video>
+        <div class="underVideo">
+          <h3>Understand the market before making decisions</h3>
+          <p>Learn how market levels, trend structure and risk planning are discussed in a simple way.</p>
+          <button onclick="openForm()">GET FREE ACCESS</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="white">
+      <div class="darkBlock">
+        <div class="pill">MOST IMPORTANT</div>
+        <h2>We can call you up to 3 times daily</h2>
+        <p>Our support desk can explain the learning material, answer basic market questions and help you understand the daily discussion structure.</p>
+
+        <div class="miniList">
+          <div class="mini"><span class="check">✓</span> Morning learning explanation before active market hours</div>
+          <div class="mini"><span class="check">✓</span> Basic trend and market structure discussion</div>
+          <div class="mini"><span class="check">✓</span> Risk-control and learning framework support</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="title">Why learners join</h2>
+      <p class="muted">Designed for serious beginners who want structured education, not random information.</p>
+
+      <div class="trustGrid">
+        <div class="trust">
+          <div class="icon">1</div>
+          <div>
+            <h3>Clear daily structure</h3>
+            <p>Learn how to read market direction, levels and risk zones step by step.</p>
+          </div>
+        </div>
+
+        <div class="trust">
+          <div class="icon">2</div>
+          <div>
+            <h3>Phone guidance available</h3>
+            <p>Get help understanding the learning material through guided phone support.</p>
+          </div>
+        </div>
+
+        <div class="trust">
+          <div class="icon">3</div>
+          <div>
+            <h3>Risk-control focused</h3>
+            <p>The education framework emphasizes discipline, planning and avoiding emotional decisions.</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <section>
       <div class="card">
         <div class="pill">WHAT YOU GET</div>
-        <h2>Structured market education</h2>
-        <div class="benefit">✓ Basic market structure explanation</div>
-        <div class="benefit">✓ Risk-control learning framework</div>
-        <div class="benefit">✓ Entry and exit concepts explained as education</div>
-        <div class="benefit">✓ Phone support for learning questions</div>
-        <div class="benefit">✓ Beginner-friendly discussion format</div>
+        <h3>Structured market education</h3>
+        <p>Simple explanations for beginners and active learners who want a more organized learning path.</p>
+
+        <div class="benefit"><span class="check">✓</span> Basic market structure explanation</div>
+        <div class="benefit"><span class="check">✓</span> Risk-control learning framework</div>
+        <div class="benefit"><span class="check">✓</span> Entry and exit concepts explained as education</div>
+        <div class="benefit"><span class="check">✓</span> Phone support for learning questions</div>
+        <div class="benefit"><span class="check">✓</span> Beginner-friendly discussion format</div>
       </div>
     </section>
 
-    <section style="padding-bottom:120px">
-      <div class="card darkcard" style="text-align:center">
-        <h2>FREE FOR EARLY LEARNERS</h2>
-        <p>Complete the form to continue to the learning access page.</p>
-        <button onclick="openForm()">JOIN FREE LEARNING</button>
+    <section class="final">
+      <div class="goldBox">
+        <div class="goldInner">
+          <h2>FREE FOR EARLY LEARNERS</h2>
+          <p>Complete the form to continue to the learning access page.</p>
+          <button onclick="openForm()">JOIN FREE LEARNING</button>
+        </div>
       </div>
     </section>
   </main>
@@ -107,27 +210,33 @@
   </div>
 
   <div class="modal" id="leadModal">
-    <div class="formbox">
+    <div class="formBox">
       <button class="close" onclick="closeForm()">×</button>
-      <div class="formhead">
+
+      <div class="formHead">
+        <div class="phoneIcon">☎</div>
         <h2>GET FREE<br>LEARNING ACCESS</h2>
-        <p>Fill your details to continue.</p>
+        <p>Fill your details to continue to the learning access page.</p>
       </div>
 
       <form id="leadForm">
         <div>
           <label>Full Name</label>
-          <input name="name" type="text" placeholder="Enter your name" required>
+          <input name="name" type="text" placeholder="Enter your name" required />
         </div>
+
         <div>
           <label>Age</label>
-          <input name="age" type="number" min="18" max="80" placeholder="Enter your age" required>
+          <input name="age" type="number" min="18" max="80" placeholder="Enter your age" required />
         </div>
+
         <div>
           <label>Mobile Number</label>
-          <input name="phone" type="tel" placeholder="Enter your mobile number" required>
+          <input name="phone" type="tel" placeholder="Enter your mobile number" required />
         </div>
+
         <button type="submit">SUBMIT & CONTINUE</button>
+
         <p class="privacy">By submitting, you agree to be contacted for educational market discussion. Educational content only. Not financial advice.</p>
       </form>
     </div>
