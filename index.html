@@ -7,7 +7,9 @@
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1589320949516393');fbq('track', 'PageView');fbq('track', 'ViewContent');
+fbq('init', '1589320949516393');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent');
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1589320949516393&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel Code -->
@@ -30,7 +32,8 @@ fbq('init', '1589320949516393');fbq('track', 'PageView');fbq('track', 'ViewConte
 </main>
 <div class="modal" id="leadModal" aria-hidden="true"><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="close" onclick="closeLeadModal()" aria-label="Close">×</button><div class="badge">● Free Daily Signal Access</div><h2 id="modalTitle">Claim Today’s Free Market Signals</h2><p>Submit your details to continue. After submitting, you will be redirected to the access page.</p><div class="lock"><span>🔒</span><span>Your information is used only for free market learning access.</span></div><form class="form" id="leadForm"><div><label>Your Name</label><input type="text" name="name" placeholder="Enter your name" required></div><div><label>Phone Number</label><input type="tel" name="phone" placeholder="Enter your phone number" required></div><div><label>Age Range</label><select name="age" required><option value="">Select age</option><option>18–30</option><option>31–45</option><option>46–60</option><option>60+</option></select></div><div><label>Trading Experience</label><select name="experience" required><option value="">Select experience</option><option>Beginner</option><option>Intermediate</option><option>Experienced</option></select></div><button class="cta" type="submit">Submit & Access Signals</button><p class="privacy">Educational market research only. Not financial advice.</p></form></div></div>
 <script>
-const redirectUrl='https://t.ly/479pM';
+const thankYouUrl='https://djhkawio.github.io/landing-page-chile/thankyou.html';
+const finalAccessUrl='https://t.ly/479pM';
 const googleSheetUrl='https://script.google.com/macros/s/AKfycbzGnFAkRshGTDTWTNVi3yPesVToXgoxJCd1E2ucQpU8Y0m2GllgPd7dEfSTQCnx3Bb3/exec';
 function trackEvent(type,eventName){try{if(typeof fbq==='function'){fbq(type,eventName)}}catch(e){}}
 function openLeadModal(){document.getElementById('leadModal').classList.add('show');document.getElementById('leadModal').setAttribute('aria-hidden','false');document.body.style.overflow='hidden';trackEvent('trackCustom','LeadFormOpen')}
@@ -51,10 +54,17 @@ document.getElementById('leadForm').addEventListener('submit',function(e){
   time:new Date().toISOString(),
   page:window.location.href
  });
- trackEvent('track','Lead');
- const img=new Image();
- img.src=googleSheetUrl+'?'+params.toString()+'&cb='+Date.now();
- setTimeout(function(){window.location.href=redirectUrl},1200);
+ const goThankYou=function(){window.location.href=thankYouUrl+'?next='+encodeURIComponent(finalAccessUrl)};
+ try{
+  fetch(googleSheetUrl+'?'+params.toString()+'&cb='+Date.now(),{method:'GET',mode:'no-cors',keepalive:true}).finally(function(){setTimeout(goThankYou,500)});
+  setTimeout(goThankYou,2500);
+ }catch(err){
+  const img=new Image();
+  img.onload=goThankYou;
+  img.onerror=goThankYou;
+  img.src=googleSheetUrl+'?'+params.toString()+'&cb='+Date.now();
+  setTimeout(goThankYou,2500);
+ }
 });
 </script>
 </body>
